@@ -47,4 +47,48 @@ function fizzBuzz(arr){
 }
 
 let fizzArr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-console.log(fizzBuzz(fizzArr))
+// console.log(fizzBuzz(fizzArr))
+
+
+// isPrime
+// Define a function isPrime(number) that returns true if number is prime. Otherwise, false. Assume number is a positive integer.
+
+function isPrime(num) {
+    if(num == 2) {
+        return true
+    }
+    for(i=2; i <= Math.floor(num/2)+1; i++) {
+        if(num%i == 0) {
+            return false
+        }
+    }
+
+    return true
+}
+
+for (n=2; n < 19; n++) {
+    console.log(`${n}: ${isPrime(n)}`)
+}
+
+
+// sumOfPrimes
+// Using firstNPrimes, write a function sumOfNPrimes(n) that returns the sum of the first n prime numbers. Hint: use isPrime as a helper method.
+
+function sumOfPrimes(n){
+    let sum = 0
+    let primeCount = 0
+    let i = 2
+
+    while (primeCount < n) {
+        if(isPrime(i)) {
+            sum += i
+            primeCount ++
+        }
+        i++
+    }
+
+
+    return sum
+}
+
+console.log(sumOfPrimes(4))
