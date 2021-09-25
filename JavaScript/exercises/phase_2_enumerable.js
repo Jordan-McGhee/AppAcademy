@@ -31,42 +31,69 @@
 const NUMS = [1,2,3,4,5]
 
 // myEACH
+
+// set myEach equal to a function that takes another function as an argument
 Array.prototype.myEach = function(func) {
+
+    // iterate over the length of the arr, using this
     for(i=0; i<this.length; i++) {
+
+        // callback that will be filled in below. This function will take the arr at index i as an argument
         func(this[i])
     }
 }
 
+// Call myEach on NUMS. Fat arrow function is the callback from before. It will print to the console 
 // NUMS.myEach((num) => {
 //     console.log(`Square of ${num} is ${num*num}`)
 // })
 
 
 // myMap
+// set myMap equal to a function that takes another function as an argument
 Array.prototype.myMap = function(func) {
+
+    // variable for the arr we will return
     let newArr = []
 
+    // uses myEach (a closure or nested function), which takes a function as an argument
+    // el => newArr.push() is the callback function for myEach
+    // func(el) is the callback function for myMap
     this.myEach(el => newArr.push(func(el)))
 
     return newArr
 }
 
+// calls myMap and passes a fat arrow function as an argument
 // console.log(NUMS.myMap(num => num*num))
 
 
 // myReduce
+
+// set myReduce equal to a function that takes another function and an inital value as arguments
 Array.prototype.myReduce = function(func, initialValue) {
+
+    // set arr equal to this
     let arr = this
 
+    // check if initialValue is given in the function call
     if(initialValue === undefined) {
+
+        // if it isn't, set inital value to the first value in the arr
         initialValue = arr[0]
+
+        // remove the first index/value from the arr
         arr = arr.slice(1)
     }
 
+    // set result equal to initial value 
     let result = initialValue
 
+    // use myEach again, which takes another function as an argument
+    // el => result is the callback
+    // func(result, el) is the callback for the original function
     arr.myEach(el => result = func(result, el))
-
+    
     return result
 }
 
