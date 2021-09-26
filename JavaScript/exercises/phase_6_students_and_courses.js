@@ -39,19 +39,6 @@ Student.prototype.name = function () {
     return `${this.firstName} ${this.lastName}`
 }
 
-// Student.prototype.enroll = function (course) {
-//     if (!this.courses.includes(course)) {
-//         this.courses.forEach(crs => {
-//             if (crs.conflictsWith(course)) {
-//                 throw "Course conflict!";
-//             }
-//         });
-
-//         this.courses.push(course.name)
-//         course.addStudent(this)
-//     }
-// }
-
 Student.prototype.enroll = function (course) {
     if (!this.courses.includes(course)) {
         this.courses.forEach(crs => {
